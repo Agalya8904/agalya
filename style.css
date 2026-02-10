@@ -1,0 +1,149 @@
+:root{
+	--bg1: #0f172a;
+	--bg2: #3b82f6;
+	--card-bg: rgba(255,255,255,0.95);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	color:#0b1220;
+	overflow:hidden;
+}
+
+.card{
+	width:min(720px, 92vw);
+	max-width:720px;
+	background:var(--card-bg);
+	border-radius:16px;
+	padding:36px 28px;
+	box-shadow:0 12px 40px rgba(3,7,18,0.6), 0 2px 6px rgba(2,6,12,0.2);
+	text-align:center;
+	position:relative;
+	z-index:10;
+}
+
+.card-title{
+	margin:0 0 8px 0;
+	font-size:2.25rem;
+	letter-spacing:0.6px;
+	color:#111827;
+}
+.card-message{
+	margin:0 0 20px 0;
+	color:#334155;
+	font-size:1.05rem;
+	opacity:0.95;
+}
+.btn{
+	background:linear-gradient(180deg,#ef4444,#dc2626);
+	color:white;
+	border:none;
+	padding:12px 20px;
+	border-radius:10px;
+	font-size:1rem;
+	cursor:pointer;
+	box-shadow:0 8px 20px rgba(220,38,38,0.25);
+}
+.btn:active{transform:translateY(1px)}
+.hint{
+	margin-top:12px;
+	color:#6b7280;
+	font-size:0.9rem;
+}
+
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
+
+.name-input{
+	display:inline-block;
+	width:60%;
+	max-width:360px;
+	padding:10px 12px;
+	margin:12px 0 8px 0;
+	border-radius:10px;
+	border:1px solid rgba(15,23,42,0.06);
+	font-size:1rem;
+}
+
+/* balloon stage - full page layer for balloons */
+.balloon-stage{
+	position:fixed;
+	left:0;top:0;right:0;bottom:0;
+	pointer-events:none;
+	z-index:5;
+}
+
+.balloon{
+	position:absolute;
+	width:56px;
+	height:72px;
+	border-radius:50% 50% 48% 48%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	transform-origin:center bottom;
+	box-shadow:0 8px 18px rgba(2,6,23,0.25) inset, 0 6px 18px rgba(2,6,12,0.25);
+}
+.balloon:after{
+	content:'';
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%);
+	top:72px;
+	width:2px;height:48px;
+	background:rgba(0,0,0,0.15);
+	border-radius:2px;
+}
+
+/* heart-shaped balloon using pseudo elements */
+.balloon.heart{
+	background:transparent;
+	border-radius:0;
+	width:64px; height:64px;
+}
+.balloon.heart::before,
+.balloon.heart::after{
+	content:'';
+	position:absolute;
+	width:40px; height:40px;
+	background:linear-gradient(180deg,#ff7b7b,#ef4444);
+	border-radius:50%;
+	transform-origin:center;
+}
+.balloon.heart::before{ left:18px; top:4px }
+.balloon.heart::after{ right:18px; top:4px }
+.balloon.heart span{
+	position:absolute; left:0; right:0; top:26px; margin:auto; width:0;height:0;
+	transform:rotate(45deg); background:linear-gradient(180deg,#ff7b7b,#ef4444); width:40px; height:40px; border-radius:6px 6px 0 0;
+}
+.balloon.heart:after{ top:72px; height:48px; opacity:0.9 }
+
+/* color presets */
+.red{background:linear-gradient(180deg,#ff7b7b,#ef4444)}
+.yellow{background:linear-gradient(180deg,#fff59b,#f59e0b)}
+.green{background:linear-gradient(180deg,#86efac,#16a34a)}
+.blue{background:linear-gradient(180deg,#93c5fd,#3b82f6)}
+.purple{background:linear-gradient(180deg,#d8b4fe,#7c3aed)}
+
+@keyframes floatUp{
+	0%{transform:translateY(0) rotate(0deg); opacity:1}
+	100%{transform:translateY(-140vh) rotate(360deg); opacity:0.95}
+}
+
+/* confetti canvas sits below the card but above background */
+#confetti-canvas{
+	position:fixed;left:0;top:0;width:100%;height:100%;z-index:8;pointer-events:none;
+}
+
+/* small responsive tweaks */
+@media (max-width:520px){
+	.card{padding:24px}
+	.card-title{font-size:1.6rem}
+}
+

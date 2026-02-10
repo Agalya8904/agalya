@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Happy Birthday!</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+		<div class="balloon-stage" id="balloon-stage" aria-hidden="true"></div>
+
+			<main class="card" role="main">
+				<h1 class="card-title">Happy Birthday!</h1>
+				<p class="card-message" id="card-message">Wishing you a day filled with love, joy, and cake.</p>
+
+				<label for="name-input" class="visually-hidden">Recipient name (optional)</label>
+				<input id="name-input" class="name-input" type="text" placeholder="Name (optional) — e.g. Alex" />
+
+				<button id="celebrate-btn" class="btn">Celebrate 🎉</button>
+				<p class="hint">Click the button to send balloons and confetti. Add a name to personalize the greeting.</p>
+
+				<!-- live region for screen readers -->
+				<div id="live" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+			</main>
+
+		<script src="script.js" defer></script>
+	</body>
+</html>
+
